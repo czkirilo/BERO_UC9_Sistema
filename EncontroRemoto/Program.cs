@@ -7,7 +7,7 @@ namespace EncontroRemoto
   {
     static void Main(string[] args)
     {
-      List<PessoaFisica> listaPf = new List<PessoaFisica>();
+      // List<PessoaFisica> listaPf = new List<PessoaFisica>();
 
       void BarraCarregamento(string textoCarregamento)
       {
@@ -91,43 +91,58 @@ namespace EncontroRemoto
 
             novapf.endereco = endPf;
 
-            Console.WriteLine($"Digite seu CPF (somente números)");
-            novapf.cpf = Console.ReadLine();
+            // Console.WriteLine($"Digite seu CPF (somente números)");
+            // novapf.cpf = Console.ReadLine();
 
             Console.WriteLine($"Digite seu Nome");
             novapf.nome = Console.ReadLine();
 
-            Console.WriteLine($"Digite o valor do seu rendimento mensal");
-            novapf.rendimento = float.Parse(Console.ReadLine());
+            // Console.WriteLine($"Digite o valor do seu rendimento mensal");
+            // novapf.rendimento = float.Parse(Console.ReadLine());
 
-            Console.WriteLine($"Digite sua data de nascimento [AAAA,MM,DD");
-            novapf.dataNascimento = DateTime.Parse(Console.ReadLine());     
+            // Console.WriteLine($"Digite sua data de nascimento [AAAA,MM,DD");
+            // novapf.dataNascimento = DateTime.Parse(Console.ReadLine());     
 
            // Console.WriteLine($"Rua: {novapf.endereco.logradouro},{novapf.endereco.numero}");
             //Console.WriteLine(novapf.ValidarDataNascimento(novapf.dataNascimento));
 
             bool idadeValida = novapf.ValidarDataNascimento(novapf.dataNascimento);
             //Console.WriteLine(idadeValida);
-            if (idadeValida == true)
-            {
-              Console.WriteLine($"Cadastro Aprovado");
-              listaPf.Add(novapf);
-              Console.WriteLine(novapf.PagarImposto(novapf.rendimento));
-            }
-            else
-            {
-              Console.WriteLine($"Cadastro Reprovado");
-            }
+            // if (idadeValida == true)
+            // {
+            //   Console.WriteLine($"Cadastro Aprovado");
+            //   listaPf.Add(novapf);
+            //   Console.WriteLine(novapf.PagarImposto(novapf.rendimento));
+            // }
+            // else
+            // {
+            //   Console.WriteLine($"Cadastro Reprovado");
+            // }
+
+            // using(StreamWriter sw = new StreamWriter($"{novapf.nome}.txt")){
+            // sw.Write($"{novapf.nome}");
+            // };
 
 
            // Console.WriteLine(novapf.PagarImposto(novapf.rendimento));
             break;
 
           case "2":
-          foreach (var cadaItem in listaPf)
+          using(StreamReader sr = new StreamReader("Odirlei.txt"))
           {
-            Console.WriteLine($"{cadaItem.nome}, {cadaItem.cpf}, {cadaItem.endereco.logradouro}");
+            string linha;
+            while ((linha = sr.ReadLine()) != null)
+            {
+              Console.WriteLine($"{linha}");
+            }
           }
+          Console.WriteLine($"Aperte enter para continuar");
+          Console.ReadLine();
+
+          // foreach (var cadaItem in listaPf)
+          // {
+          //   Console.WriteLine($"{cadaItem.nome}, {cadaItem.cpf}, {cadaItem.endereco.logradouro}");
+          // }
 
             // if (pj.ValidarCNPJ(pj.cnpj))
             // {
@@ -145,14 +160,14 @@ namespace EncontroRemoto
           Console.WriteLine("Digite o CPF do meliante que deseja excluir do sistema");
           string cpfProcurado = Console.ReadLine();
 
-          PessoaFisica pessoaEncontrada = listaPf.Find(cadaItem => cadaItem.cpf == cpfProcurado);
+          // PessoaFisica pessoaEncontrada = listaPf.Find(cadaItem => cadaItem.cpf == cpfProcurado);
 
-          if (pessoaEncontrada != null){
-            listaPf.Remove(pessoaEncontrada);
-            Console.WriteLine($"Cadastro Removido");
-          }else{
-            Console.WriteLine($"CPF não encontrado");
-          }
+          // if (pessoaEncontrada != null){
+          //   listaPf.Remove(pessoaEncontrada);
+          //   Console.WriteLine($"Cadastro Removido");
+          // }else{
+          //   Console.WriteLine($"CPF não encontrado");
+          // }
 
           break;
 
